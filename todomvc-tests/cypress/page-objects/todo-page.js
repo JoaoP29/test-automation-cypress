@@ -19,6 +19,10 @@ export class TodoPage{
         cy.contains('Completed').click()
     }
 
+    clearCompletedTodo(){
+        cy.contains('Clear').click()
+    }
+
     showActive(){
         cy.contains('Active').click()
     }
@@ -31,7 +35,13 @@ export class TodoPage{
         cy.get('.todo-list li').should('have.length', expectedNumberOfTodos)
     }
 
-    validateCompletedTodo(){
-        
+    validateToggleState(todoIndex, shouldBeCompleted){
+        const label = cy.get(`.todo-list li:nth-child(${todoIndex + 1}) .toggle`)
+        label.should(`${shouldBeCompleted ? '' : 'not.'}be.checked`)
+    }
+
+    validateTodoCompletedState(todoIndex, shouldBeCompleted){
+        const label = cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`)
+        label.should(`${shouldBeCompleted ? '' : 'not.'}have.css`, 'text-decoration-line', 'line-through')
     }
 }
