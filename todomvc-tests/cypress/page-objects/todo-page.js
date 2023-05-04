@@ -20,7 +20,7 @@ export class TodoPage{
     }
 
     clearCompletedTodo(){
-        cy.contains('Clear').click()
+        cy.get('.clear-completed').click()
     }
 
     showActive(){
