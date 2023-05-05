@@ -9,6 +9,7 @@ describe('trying visual validation', () => {
     before(() => todoPage.navigate())
     
     // This is not working yet :(
+    // UPDATE: I figured out I forgot to set env variables lol
     beforeEach(() => cy.eyesOpen({appName: "Joao's portfolio TodoMVC", batchName: "Joao's portfolio TodoMVC batch"}))
     afterEach(() => cy.eyesClose())
 
